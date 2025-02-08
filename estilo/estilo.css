@@ -1,0 +1,161 @@
+/* Estilo global para el fondo de la página */
+body {
+    background-color: #f8f9fa;
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Barra de navegación */
+.navbar {
+    background-color: #007bff; /* Fondo azul */
+    padding: 10px 0; /* Espaciado */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 8px; /* Bordes redondeados */
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Asegura que la barra de navegación quede por encima de otros elementos */
+}
+
+/* Logo en la barra */
+.navbar-brand img {
+    border-radius: 50%; /* Hacer el logo circular */
+    transition: transform 0.3s ease; /* Animación de logo */
+}
+
+/* Efecto al pasar el mouse sobre el logo */
+.navbar-brand img:hover {
+    transform: scale(1.1); /* Efecto de zoom */
+}
+
+/* Estilo de los enlaces de navegación */
+.navbar-nav .nav-item .nav-link {
+    color: #fff !important; /* Color blanco */
+    font-weight: 500; /* Font-weight semi-bold */
+    padding: 10px 20px; /* Espaciado */
+    text-transform: uppercase; /* Texto en mayúsculas */
+    font-size: 16px;
+    letter-spacing: 1px;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover sobre los enlaces */
+.navbar-nav .nav-item .nav-link:hover {
+    background-color: #0056b3; /* Fondo azul más oscuro */
+    color: #fff; /* Mantener texto blanco */
+    border-radius: 4px; /* Bordes redondeados */
+}
+
+/* Estilo para los dropdowns */
+.navbar-nav .nav-item .dropdown-menu {
+    display: none; /* Menú oculto por defecto */
+    transition: opacity 0.3s ease;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.navbar-nav .nav-item:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Flecha debajo del texto "Sobre Nosotros" */
+.navbar-nav .nav-item .dropdown-toggle::after {
+    content: "▼"; /* La flecha */
+    font-size: 10px; /* Flecha más pequeña */
+    position: absolute;
+    bottom: -6px; /* Mover hacia abajo */
+    left: 50%;
+    transform: translateX(-50%); /* Centrarla */
+    color: #fff; /* Color blanco */
+}
+
+/* Estilo de las tarjetas de información en la página de contacto */
+.card {
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    border-radius: 12px; /* Bordes redondeados */
+    margin-bottom: 20px;
+    padding: 15px;
+}
+
+/* Estilo para los títulos de las tarjetas */
+.card h3 {
+    font-size: 18px;
+    color: #007bff; /* Azul para los títulos */
+}
+
+/* Estilo de los enlaces en las tarjetas */
+.card a {
+    color: #007bff; /* Azul para los enlaces */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.card a:hover {
+    color: #0056b3; /* Azul más oscuro al pasar el mouse */
+    text-decoration: underline;
+}
+
+/* Estilo de los campos del formulario */
+.form-control {
+    background-color: #e9ecef; /* Fondo gris claro */
+    border-radius: 15px;
+    border: 1px solid #ced4da; /* Borde gris */
+    padding: 12px;
+    transition: border-color 0.3s ease;
+}
+
+/* Efecto al hacer focus en los campos del formulario */
+.form-control:focus {
+    border-color: #007bff; /* Borde azul al hacer focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Efecto de sombra al hacer focus */
+}
+
+/* Estilo de los botones del formulario */
+button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Efecto hover sobre el botón */
+button:hover {
+    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+}
+
+/* Estilo de los íconos de redes sociales */
+.card .fab {
+    font-size: 18px;
+    margin-right: 10px;
+    transition: color 0.3s ease;
+}
+
+/* Efecto hover sobre los íconos de redes sociales */
+.card .fab:hover {
+    color: #0056b3; /* Cambiar el color al pasar el mouse */
+}
+
+/* Pie de página */
+footer {
+    background-color: #343a40;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+footer a {
+    color: #fff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: #007bff;
+}
