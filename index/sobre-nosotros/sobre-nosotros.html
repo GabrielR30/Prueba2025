@@ -3,17 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fotos</title>
+    <title>Sobre Nosotros - KAWOQ ONG</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../estilo/estilo.css">
     
-    <!-- Estilos adicionales -->
-    <link rel="stylesheet" href="../estilo/estilo.css"> 
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+    <style>
+        /* Estilos personalizados */
+        .mission-vision-section {
+            padding: 60px 0;
+        }
+        .values-card {
+            border-left: 4px solid #994319;
+            transition: all 0.3s ease;
+        }
+        .values-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .history-section {
+            background-color: #f8f9fa;
+            padding: 60px 0;
+        }
+        .language-btn-vertical {
+            border: 1px solid #a82b31;
+            color: #a82b31;
+            background: #fff;
+            border-radius: 6px;
+            font-size: 0.60rem;
+            font-weight: 600;
+            padding: 1px 7px;
+            transition: background 0.2s, color 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            min-width: 60px;
+            justify-content: flex-start;
+        }
+        .language-btn-vertical.selected,
+        .language-btn-vertical:active {
+            background: #a82b31 !important;
+            color: #fff !important;
+        }
+        @media (max-width: 991.98px) {
+            .navbar .position-absolute.top-0.end-0 {
+                top: 56px !important; /* Baja los botones debajo del hamburguesa */
+            }
+        }
+        .language-switcher-global {
+            position: absolute;
+            top: 0.5rem;
+            right: 1rem;
+            z-index: 1055;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
+        @media (max-width: 991.98px) {
+            .language-switcher-global {
+                position: fixed;
+                top: 62px; /* justo debajo del navbar hamburguesa */
+                right: 1rem;
+                margin-top: 0 !important;
+            }
+        }
+        @media (max-width: 991.98px) {
+            .d-flex.flex-column.align-items-end.ms-3 {
+                margin-top: 0.5rem !important;
+                margin-right: 0.5rem;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #6b1b1b;">
         <div class="container">
             <a class="navbar-brand" href="../index.html">
                 <img src="../fotos/tu-logo.png" alt="Logo" width="35">
@@ -21,92 +89,189 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse position-relative" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
-                    
-                    <!-- Dropdown para "Sobre Nosotros" -->
+                    <li class="nav-item"><a class="nav-link" href="../index.html" data-key="nav-home">Inicio</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Sobre Nosotros
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="../sobre-nosotros/sobre-nosotros.html#vision">Visión</a></li>
-                            <li><a class="dropdown-item" href="../sobre-nosotros/sobre-nosotros.html#mision">Misión</a></li>
+                        <a class="nav-link active" href="#" id="sobreNosotrosLink" data-key="nav-about">Conócenos</a>
+                        <ul class="dropdown-menu dropdown-menu-horizontal" aria-labelledby="sobreNosotrosLink">
+                            <li><a class="dropdown-item" href="#vision" data-key="nav-vision">Visión</a></li>
+                            <li><a class="dropdown-item" href="#mision" data-key="nav-mission">Misión</a></li>
+                            <li><a class="dropdown-item" href="#valores" data-key="nav-values">Valores</a></li>
+                            <li><a class="dropdown-item" href="#historia" data-key="nav-history">Historia</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item"><a class="nav-link" href="../servicios/servicios.html">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../contacto/contacto.html">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../fotos/fotos.html">Fotos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../servicios/servicios.html" data-key="nav-services">Proyectos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../contacto/contacto.html" data-key="nav-contact">Contáctanos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../apoyanos/apoyanos.html" data-key="nav-support">Apóyanos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="../fotos/fotos.html" data-key="nav-photos">Fotos</a></li>
                 </ul>
+                <!-- Botones de idioma fuera del ul, pero dentro del collapse -->
+                <div class="d-flex flex-column align-items-end ms-3" style="margin-left:auto;">
+                    <button id="lang-es" class="language-btn-vertical mb-1" onclick="setLanguage('es')">
+                        <i class="fas fa-globe-americas"></i> <span>Español</span>
+                    </button>
+                    <button id="lang-en" class="language-btn-vertical" onclick="setLanguage('en')">
+                        <i class="fas fa-globe"></i> <span>English</span>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Contenido principal -->
-    <main class="container mt-5 pt-5">
-        <h1 class="text-center mb-5">Galería de Fotos</h1>
-
-        <!-- Pobreza en Guatemala -->
-        <section class="mb-5">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <img src="../fotos/articulo1.jpg" alt="Pobreza en Guatemala" class="img-fluid rounded shadow-sm">
-                </div>
-                <div class="col-md-6">
-                    <h2>Pobreza en Guatemala</h2>
-                    <p>En Guatemala, la pobreza afecta a una gran parte de la población. La falta de recursos adecuados para la educación, la salud y el desarrollo económico es un reto constante. Nuestra misión es contribuir a cambiar esta realidad.</p>
-                </div>
-            </div>
-        </section>
-
+    <main>
         <!-- Misión -->
-        <section id="mision" class="mb-5">
-            <div class="row align-items-center">
-                <div class="col-md-6 order-md-2">
-                    <img src="../fotos/articulo2.jpg" alt="Misión" class="img-fluid rounded shadow-sm">
-                </div>
-                <div class="col-md-6">
-                    <h2>Misión</h2>
-                    <p>La misión de nuestra organización es mejorar las condiciones de vida de las comunidades más necesitadas. Trabajamos para brindarles educación, acceso a recursos y apoyo en su desarrollo integral.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Agua potable -->
-        <section class="mb-5">
-            <div class="row align-items-center">
-                <div class="col-md-6">
-                    <img src="../fotos/articulo3.jpg" alt="Agua potable" class="img-fluid rounded shadow-sm">
-                </div>
-                <div class="col-md-6">
-                    <h2>Agua Potable</h2>
-                    <p>El acceso al agua potable es fundamental para la salud y el bienestar de las personas. Nos dedicamos a implementar soluciones sostenibles para que las comunidades más vulnerables puedan tener agua limpia y segura.</p>
+        <section id="mision" class="mission-vision-section">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6 order-md-2">
+                        <img src="../fotos/articulo2.jpg" alt="Misión" class="img-fluid rounded shadow">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="mb-4" data-key="mission-title">MISIÓN</h2>
+                        <p class="lead" data-key="mission-content"></p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- Visión -->
-        <section id="vision" class="mb-5">
-            <div class="row align-items-center">
-                <div class="col-md-6 order-md-2">
-                    <img src="../fotos/articulo4.jpg" alt="Visión" class="img-fluid rounded shadow-sm">
+        <section id="vision" class="mission-vision-section bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <img src="../fotos/articulo4.jpg" alt="Visión" class="img-fluid rounded shadow">
+                    </div>
+                    <div class="col-md-6">
+                        <h2 class="mb-4" data-key="vision-title">VISIÓN</h2>
+                        <p class="lead" data-key="vision-content"></p>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <h2>Visión</h2>
-                    <p>Nuestra visión es un futuro donde todas las personas tengan acceso a los recursos necesarios para vivir dignamente. Creemos en un mundo más justo y equitativo, donde todos puedan tener las mismas oportunidades.</p>
+            </div>
+        </section>
+
+        <!-- Valores -->
+        <section id="valores" class="py-5">
+            <div class="container">
+                <h2 class="text-center mb-5" data-key="values-title">VALORES</h2>
+                <div class="row">
+                    <!-- Compromiso -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 values-card p-4">
+                            <div class="card-body">
+                                <h3 data-key="commitment-title">COMPROMISO</h3>
+                                <p data-key="commitment-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Trabajo en equipo -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 values-card p-4">
+                            <div class="card-body">
+                                <h3 data-key="teamwork-title">TRABAJO EN EQUIPO</h3>
+                                <p data-key="teamwork-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Medio ambiente -->
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100 values-card p-4">
+                            <div class="card-body">
+                                <h3 data-key="environment-title">CUIDADO DEL MEDIO AMBIENTE</h3>
+                                <p data-key="environment-content"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Historia -->
+        <section id="historia" class="history-section">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8">
+                        <h2 class="text-center mb-4" data-key="history-title">HISTORIA</h2>
+                        <p class="lead text-center" data-key="history-content"></p>
+                    </div>
                 </div>
             </div>
         </section>
     </main>
 
     <!-- Pie de página -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 ONG Chimal. Todos los derechos reservados.</p>
+    <footer class="bg-dark text-white text-center py-4">
+        <div class="container">
+            <p class="mb-0">&copy; 2025 ONG Chimal. <span data-key="footer-rights">Todos los derechos reservados</span>.</p>
+        </div>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Sistema de traducción -->
+    <script>
+        // Función para cargar traducciones
+        async function loadTranslations(lang) {
+            try {
+                const response = await fetch('./sobre-nosotros-translations.json');
+                const translations = await response.json();
+                applyTranslations(translations[lang]);
+            } catch (error) {
+                console.error('Error al cargar traducciones:', error);
+            }
+        }
+
+        // Aplicar traducciones a los elementos
+        function applyTranslations(translations) {
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[key]) {
+                    el.textContent = translations[key];
+                }
+            });
+        }
+
+        // Cambiar idioma
+        function changeLanguage(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            loadTranslations(lang);
+        }
+
+        // Cambia idioma solo si el usuario lo selecciona
+        function setLanguage(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            updateLanguageButtons(lang);
+            loadTranslations(lang);
+        }
+
+        // Marca el botón seleccionado
+        function updateLanguageButtons(lang) {
+            const esBtn = document.getElementById('lang-es');
+            const enBtn = document.getElementById('lang-en');
+            if (lang === 'es') {
+                esBtn.style.background = '#a82b31';
+                esBtn.style.color = '#fff';
+                enBtn.style.background = '#fff';
+                enBtn.style.color = '#a82b31';
+            } else {
+                enBtn.style.background = '#a82b31';
+                enBtn.style.color = '#fff';
+                esBtn.style.background = '#fff';
+                esBtn.style.color = '#a82b31';
+            }
+        }
+
+        // Inicializar idioma guardado
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+            updateLanguageButtons(savedLang);
+            loadTranslations(savedLang);
+        });
+    </script>
+
 </body>
 </html>

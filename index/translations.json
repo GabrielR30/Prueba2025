@@ -1,0 +1,28 @@
+{
+    "es": {
+        "brand-title": "<span class='brand-main'>KAWOQ</span><br><span class='brand-sub'>ONG</span>",
+        "brand-lead": "Forjando un desarrollo social<br>con visión y unidad.",
+        "nav-home": "Inicio",
+        "nav-about": "Conócenos",
+        "nav-vision": "Visión",
+        "nav-mission": "Misión",
+        "nav-services": "Proyectos",
+        "nav-contact": "Contáctanos",
+        "nav-support": "apoyanos",
+        "nav-photos": "Fotos",
+        "footer-text": "&copy; 2025 KAWOQ ONG. Todos los derechos reservados."
+    },
+    "en": {
+        "brand-title": "<span class='brand-main'>KAWOQ</span><br><span class='brand-sub'>ONG</span>",
+        "brand-lead": "Forging social development<br>with vision and unity.",
+        "nav-home": "Home",
+        "nav-about": "About Us",
+        "nav-vision": "Vision",
+        "nav-mission": "Mission",
+        "nav-services": "Projects",
+        "nav-contact": "Contact Us",
+        "nav-support": "Support Us",
+        "nav-photos": "Photos",
+        "footer-text": "&copy; 2025 KAWOQ ONG. All rights reserved."
+    }
+}

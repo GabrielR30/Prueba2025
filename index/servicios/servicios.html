@@ -1,3 +1,7 @@
+<!-- ============================
+     Página de Proyectos (servicios.html)
+     Este archivo corresponde a la sección "Proyectos" del sitio.
+     ============================ -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,7 +17,7 @@
 </head>
 <body>
     <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="../index.html">
                 <img src="../fotos/tu-logo.png" alt="Logo" width="35">
@@ -23,12 +27,19 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../sobre-nosotros/sobre-nosotros.html">Sobre Nosotros</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../servicios/servicios.html">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../contacto/contacto.html">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="../fotos/fotos.html">Fotos</a></li>
-                </ul>
+    <a class="nav-link" href="/index/index.html" data-key="nav-home">Inicio</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link" href="/index/sobre-nosotros/sobre-nosotros.html" id="sobreNosotrosLink" data-key="nav-about">Conócenos</a>
+                    <ul class="dropdown-menu dropdown-menu-horizontal" aria-labelledby="sobreNosotrosLink">
+                        <li><a class="dropdown-item" href="/index/sobre-nosotros/sobre-nosotros.html#vision" data-key="nav-vision">Visión</a></li>
+                        <li><a class="dropdown-item" href="/index/sobre-nosotros/sobre-nosotros.html#mision" data-key="nav-mission">Misión</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="/index/servicios/servicios.html" data-key="nav-services">Proyectos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index/contacto/contacto.html" data-key="nav-contact">Contáctanos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index/apoyanos/apoyanos.html" data-key="nav-support">Apóyanos</a></li>
+                <li class="nav-item"><a class="nav-link" href="/index/fotos/fotos.html" data-key="nav-photos">Fotos</a></li>
             </div>
         </div>
     </nav>

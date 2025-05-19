@@ -2,17 +2,350 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio - ONG Chimal</title>
+    <!-- Ajuste importante para viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KAWOQ ONG</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    
-    <!-- Estilos adicionales -->
-    <link rel="stylesheet" href="./estilo/estilo.css">
+    <link rel="stylesheet" href="../estilo/estilo.css">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
 
     <style>
-        /* Estilos personalizados */
+        .language-bar {
+            background-color: #f8f9fa;
+            padding: 5px 0;
+            text-align: right;
+            font-size: 0.8rem;
+        }
+        .language-btn {
+            background: #fff;
+            border: 1.5px solid #a82b31;
+            color: #a82b31;
+            cursor: pointer;
+            padding: 2px 14px;
+            border-radius: 8px;
+            font-size: 0.92rem;
+            font-weight: 600;
+            box-shadow: 0 1px 4px rgba(168,43,49,0.06);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            transition: background 0.18s, color 0.18s, border 0.18s;
+        }
+        .language-btn.active,
+        .language-btn:focus {
+            background: #a82b31;
+            color: #fff;
+            border-color: #bb7f5b;
+        }
+        .language-btn:hover:not(.active) {
+            background: #f7e7e2;
+            color: #a82b31;
+            border-color: #a82b31;
+        }
+        .language-btn:focus {
+            outline: none !important;
+            box-shadow: 0 0 0 2px #bb7f5b33 !important;
+        }
+        .brand-header {
+            background: linear-gradient(#994319 50%, #b78265 100%);
+            padding: 15px 0;
+            color: white;
+            position: relative;
+        }
+        .brand-container {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 0 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .brand-logo {
+            height: 90px;
+            width: auto;
+            flex-shrink: 0;
+        }
+        .brand-name-container {
+            display: flex;
+            flex-direction: column;
+            line-height: 1;
+        }
+        .brand-name {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0;
+            color: white;
+            font-family: 'Arial', sans-serif;
+        }
+        .brand-subname {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 0;
+            color: white;
+            font-family: 'Arial', sans-serif;
+            margin-top: -5px;
+        }
+        .vertical-divider {
+            height: 50px;
+            width: 1px;
+            background-color: rgba(255, 255, 255, 0.5);
+            margin: 0 15px;
+            flex-shrink: 0;
+        }
+        .brand-slogan {
+            font-size: 1.1rem;
+            margin: 0;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 300;
+            max-width: 400px;
+        }
+        .brand-lang-top {
+            position: absolute;
+            top: 12px;
+            right: 20px;
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+        
+        /* Media queries para móvil */
+        @media (max-width: 768px) {
+            .brand-container {
+                flex-wrap: wrap;
+                padding: 10px 15px;
+                gap: 10px;
+            }
+            
+            .brand-logo {
+                height: 70px;
+            }
+            
+            .brand-name {
+                font-size: 1.6rem;
+            }
+            
+            .brand-subname {
+                font-size: 1.2rem;
+            }
+            
+            .vertical-divider {
+                height: 40px;
+            }
+            
+            .brand-slogan {
+                font-size: 0.95rem;
+                padding-left: 90px; /* Alineado con logo */
+                margin-top: -30px; /* Subir para alinear */
+                width: calc(100% - 90px);
+            }
+            
+            /* Ocultar botones de idioma duplicados en navbar móvil */
+            .navbar-collapse .language-buttons {
+                display: none !important;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .brand-name {
+                font-size: 1.4rem;
+            }
+            
+            .brand-subname {
+                font-size: 1.1rem;
+            }
+            
+            .brand-logo {
+                height: 60px;
+            }
+            
+            .brand-slogan {
+                font-size: 0.9rem;
+                padding-left: 70px;
+                width: calc(100% - 70px);
+            }
+        }
+
+        /* Oculta los botones de idioma dentro del navbar en móvil */
+        @media (max-width: 991.98px) {
+          .navbar-collapse .d-flex.d-lg-none {
+            display: none !important;
+          }
+        }
+
+        /* Asegura que los botones de idioma del header estén visibles en móvil */
+        .brand-lang-top {
+          display: flex !important;
+          position: absolute;
+          top: 12px;
+          right: 20px;
+          z-index: 2;
+        }
+
+        /* Mejorar header en móvil */
+        @media (max-width: 576px) {
+          .brand-header {
+            padding: 10px 0 18px 0;
+            min-height: 0;
+          }
+          .brand-container {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 6px;
+            padding: 0 10px;
+          }
+          .brand-logo {
+            height: 48px;
+            margin-bottom: 2px;
+          }
+          .brand-name-container {
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 0;
+          }
+          .brand-name {
+            font-size: 1.2rem;
+            margin-bottom: 0;
+          }
+          .brand-subname {
+            font-size: 1rem;
+            margin-top: -2px;
+          }
+          .vertical-divider {
+            display: block;
+            height: 28px;
+            margin: 4px 0;
+          }
+          .brand-slogan {
+            font-size: 0.8rem;
+            padding-left: 0;
+            margin-top: 2px;
+            width: 100%;
+            text-align: left;
+          }
+          .brand-lang-top {
+            flex-direction: column;
+            gap: 4px;
+            top: 8px;
+            right: 8px;
+          }
+          .language-btn {
+            font-size: 0.82rem;
+            padding: 2px 8px;
+            min-width: 80px;
+            justify-content: flex-start;
+          }
+        }
+
+        /* Header compacto pero con la misma estructura en móvil */
+        @media (max-width: 576px) {
+          .brand-header {
+            padding: 8px 0 10px 0;
+          }
+          .brand-container {
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            padding: 0 6px;
+          }
+          .brand-logo {
+            height: 38px;
+            width: auto;
+          }
+          .brand-name {
+            font-size: 1.1rem;
+          }
+          .brand-subname {
+            font-size: 0.85rem;
+            margin-top: -3px;
+          }
+          .vertical-divider {
+            height: 22px;
+            margin: 0 7px;
+          }
+          .brand-slogan {
+            font-size: 0.7rem;
+            max-width: 120px;
+            margin: 0;
+            padding: 0;
+            text-align: left;
+            line-height: 1.2;
+          }
+          .brand-name-container {
+            line-height: 1;
+          }
+          .brand-lang-top {
+            gap: 3px;
+            top: 6px;
+            right: 6px;
+          }
+          .language-btn {
+            font-size: 0.7rem;
+            padding: 1px 7px;
+            min-width: 60px;
+          }
+        }
+
+        /* Navbar hamburguesa vertical y ancho completo en móvil */
+        @media (max-width: 991.98px) {
+          .navbar-collapse {
+            flex-direction: column !important;
+            align-items: stretch !important;
+            width: 100%;
+            background: #6b1b1b !important;
+            padding: 0 0 10px 0;
+          }
+          .navbar-nav {
+            flex-direction: column !important;
+            width: 100%;
+          }
+          .navbar-nav .nav-item {
+            width: 100%;
+          }
+          .navbar-nav .nav-link {
+            width: 100%;
+            text-align: left;
+            padding: 12px 20px;
+            border-bottom: 1px solid #994319;
+            color: #fff !important;
+            font-size: 1.08rem;
+          }
+          .navbar-nav .nav-link.active,
+          .navbar-nav .nav-link:focus {
+            background: #a82b31 !important;
+            color: #fff !important;
+          }
+          .navbar-nav .dropdown-menu {
+            position: static !important;
+            float: none;
+            background: #7d2d2d;
+            width: 100%;
+            margin: 0;
+            border-radius: 0;
+            box-shadow: none;
+          }
+          .navbar-nav .dropdown-item {
+            color: #fff !important;
+            padding-left: 36px;
+            border-bottom: 1px solid #994319;
+          }
+        }
+
+        .navbar-nav {
+            flex-direction: row !important;
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+        /* Resto de estilos se mantienen igual */
+        .carousel-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+        }
         .section-title {
             font-size: 2rem;
             font-weight: bold;
@@ -20,166 +353,182 @@
             margin-bottom: 20px;
             color: #333;
         }
-
-        .info-card {
+        .info-card-large {
             background: #fff;
             border-radius: 12px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            transition: transform 0.3s ease-in-out;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            border-left: 4px solid #a82b31;
         }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .info-card h3 {
-            color: #007bff;
-        }
-
-        .info-card p {
-            font-size: 1rem;
+        .impact-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
             color: #555;
         }
-
-        .icon-circle {
-            width: 60px;
-            height: 60px;
-            background: #007bff;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-size: 24px;
-            margin: 0 auto 15px auto;
+        footer.custom-footer,
+        footer.custom-footer p {
+            background-color: #6b1b1b !important;
+            color: #fff !important;
+            text-align: center !important;
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            font-size: 0.95rem !important;
+            margin: 0 !important;
+            padding: 8px 0 !important;
+            border: none !important;
+            letter-spacing: 0.03em;
         }
-
-        /* Estilos del banner */
-        .carousel-item img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
+        body {
+            top: 0 !important;
+            padding-top: 0;
+            overflow-x: hidden;
+        }
+        /* NAVBAR (se carga desde navbar.html) */
+        .navbar {
+            background: #6b1b1b !important;
+            border-top: 2px solid #994319;
         }
     </style>
 </head>
-<body>
-    <!-- Barra de navegación -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-        <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <img src="./fotos/tu-logo.png" alt="Logo" width="35">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
+<body data-page="index">
+
+    <!-- HEADER MODIFICADO -->
+    <header class="brand-header position-relative">
+        <div class="brand-lang-top">
+            <button class="language-btn" onclick="changeLanguage('es')">
+                <i class="fas fa-globe-americas"></i> Español
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="./index.html">Inicio</a></li>
-                    
-                    <!-- Dropdown para "Sobre Nosotros" -->
-                    <li class="nav-item dropdown">
-                        <a class="nav-link" href="./sobre-nosotros/sobre-nosotros.html" id="sobreNosotrosLink">
-                            Sobre Nosotros
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="sobreNosotrosLink">
-                            <li><a class="dropdown-item" href="./sobre-nosotros/sobre-nosotros.html#vision">Visión</a></li>
-                            <li><a class="dropdown-item" href="./sobre-nosotros/sobre-nosotros.html#mision">Misión</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav-item"><a class="nav-link" href="./servicios/servicios.html">Servicios</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./contacto/contacto.html">Contacto</a></li>
-                    <li class="nav-item"><a class="nav-link" href="./fotos/fotos.html">Fotos</a></li>
-                </ul>
-            </div>
+            <button class="language-btn" onclick="changeLanguage('en')">
+                <i class="fas fa-globe"></i> English
+            </button>
         </div>
-    </nav>
-
-    <!-- Banner con imágenes cambiando cada 30 segundos -->
-    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" data-bs-interval="15000">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="./fotos/articulo1.jpg" alt="Imagen 1" class="d-block w-100">
+        <div class="container brand-container">
+            <img src="./fotos/tu-logo.png" alt="Logo KAWOO ONG" class="brand-logo">
+            <div class="brand-name-container">
+                <span class="brand-name" data-key="brand-title"></span>
+                <span class="brand-subname" data-key="brand-subtitle"></span>
             </div>
-            <div class="carousel-item">
-                <img src="./fotos/articulo2.jpg" alt="Imagen 2" class="d-block w-100">
-            </div>
-            <div class="carousel-item">
-                <img src="./fotos/articulo3.jpg" alt="Imagen 3" class="d-block w-100">
-            </div>
-        </div>
-    </div>
-
-    <!-- Hero Section -->
-    <header class="bg-light text-center py-5">
-        <div class="container">
-            <h1 class="display-4">Bienvenidos a ONG Chimal</h1>
-            <p class="lead">Trabajamos para mejorar la calidad de vida de las comunidades más necesitadas.</p>
-            <a href="./sobre-nosotros/sobre-nosotros.html" class="btn btn-primary">Conócenos</a>
+            <div class="vertical-divider"></div>
+            <p class="brand-lead" data-key="brand-lead">
+            </p>
         </div>
     </header>
 
-    <!-- Sección de Información con Tarjetas -->
-    <section class="container my-5">
-        <h2 class="section-title">Nuestro Impacto</h2>
-        <div class="row">
-            <!-- Tarjeta 1 -->
-            <div class="col-md-4">
-                <div class="info-card text-center p-4">
-                    <div class="icon-circle">
-                        <i class="fas fa-users"></i>
-                    </div>
-                    <h3>+10,000 personas beneficiadas</h3>
-                    <p>Hemos logrado cambiar la vida de miles de familias mediante nuestros programas de apoyo.</p>
-                </div>
-            </div>
+    <!-- Navbar compartido (no modificado) -->
+    <div id="navbar-container"></div>
 
-            <!-- Tarjeta 2 -->
-            <div class="col-md-4">
-                <div class="info-card text-center p-4">
-                    <div class="icon-circle">
+    <!-- Resto del contenido se mantiene exactamente igual -->
+    <div id="mainCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="./fotos/articulo1.jpg" class="d-block w-100" alt="Imagen 1">
+            </div>
+            <div class="carousel-item">
+                <img src="./fotos/articulo2.jpg" class="d-block w-100" alt="Imagen 2">
+            </div>
+            <div class="carousel-item">
+                <img src="./fotos/articulo3.jpg" class="d-block w-100" alt="Imagen 3">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#mainCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#mainCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+    </div>
+
+    <section class="container my-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="info-card-large text-center p-5">
+                    <div class="icon-circle-large mb-4">
                         <i class="fas fa-hands-helping"></i>
                     </div>
-                    <h3>50+ Proyectos completados</h3>
-                    <p>Desde educación hasta salud, nuestros proyectos han hecho la diferencia en comunidades vulnerables.</p>
-                </div>
-            </div>
-
-            <!-- Tarjeta 3 -->
-            <div class="col-md-4">
-                <div class="info-card text-center p-4">
-                    <div class="icon-circle">
-                        <i class="fas fa-globe"></i>
-                    </div>
-                    <h3>20+ Comunidades apoyadas</h3>
-                    <p>Nos expandimos constantemente para llevar ayuda a más comunidades necesitadas en todo el país.</p>
+                    <h3 data-key="impact-subtitle">Solidaridad que transforma</h3>
+                    <p class="impact-text" data-key="impact-content">A lo largo de la historia, Guatemala ha demostrado ser un país que siempre busca superar cualquier percance que se presente, esto, gracias a la solidaridad que muestra cada ciudadano frente a su prójimo. Hoy en día la población supera los dieciocho millones de ciudadanos y más de la mitad carecen de opciones para salir adelante, por lo que es de vital importancia apoyar, promover e incentivar métodos y programas que ayuden al auto sostenimiento, el cuidado de la salud, emprendimiento, desarrollo social y trabajo digno.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Pie de página -->
-    <footer class="bg-dark text-white text-center py-3">
-        <p>&copy; 2025 ONG Chimal. Todos los derechos reservados.</p>
+    <footer class="custom-footer">
+        <p data-key="footer-text">&copy; 2025 KAWOQ ONG. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- Bootstrap JS -->
+    <!-- Scripts (se mantienen igual) -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-
     <script>
-        // Hacer que el dropdown se active al pasar el mouse
-        document.addEventListener("DOMContentLoaded", function () {
-            let dropdown = document.querySelector(".dropdown");
-            dropdown.addEventListener("mouseenter", function () {
-                let menu = this.querySelector(".dropdown-menu");
-                menu.classList.add("show");
+        // Cargar navbar compartido
+        fetch('./partials/navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                document.getElementById('navbar-container').innerHTML = html;
+
+                // Marcar página activa
+                const currentPage = document.body.getAttribute('data-page');
+                document.querySelectorAll('.nav-link').forEach(link => {
+                    if (link.getAttribute('href').includes(currentPage)) {
+                        link.classList.add('active');
+                        link.setAttribute('aria-current', 'page');
+                    }
+                });
             });
-            dropdown.addEventListener("mouseleave", function () {
-                let menu = this.querySelector(".dropdown-menu");
-                menu.classList.remove("show");
+
+        async function loadTranslations(lang) {
+            try {
+                const page = document.body.getAttribute('data-page');
+                const generalResponse = await fetch('./translations.json');
+                const generalTranslations = await generalResponse.json();
+                const pageResponse = await fetch(`./${page}-translations.json`);
+                const pageTranslations = await pageResponse.json();
+                const translations = { ...generalTranslations[lang], ...pageTranslations[lang] };
+                applyTranslations(translations);
+            } catch (error) {
+                console.error('Error al cargar las traducciones:', error);
+            }
+        }
+
+        function applyTranslations(translations) {
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if (translations[key]) {
+                    el.innerHTML = translations[key];
+                }
             });
+        }
+
+        function changeLanguage(lang) {
+            localStorage.setItem('preferredLanguage', lang);
+            loadTranslations(lang);
+            document.querySelectorAll('.language-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if ((lang === 'es' && btn.textContent.includes('Español')) || 
+                    (lang === 'en' && btn.textContent.includes('English'))) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // Inicializar
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage') || 'es';
+            changeLanguage(savedLang);
+            
+            // Inicializar carrusel
+            var myCarousel = document.getElementById('mainCarousel');
+            if(myCarousel) {
+                new bootstrap.Carousel(myCarousel, {
+                    interval: 3000,
+                    ride: 'carousel'
+                });
+            }
+
+            // Manejar parámetro de idioma en URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const hlParam = urlParams.get('hl');
+            if(hlParam && (hlParam === 'es' || hlParam === 'en')) {
+                changeLanguage(hlParam, false);
+            }
         });
     </script>
 </body>

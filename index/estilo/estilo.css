@@ -1,161 +1,228 @@
-/* Estilo global para el fondo de la página */
+:root {
+    --primary-color: #6b1b1b; /* Color principal cambiado */
+    --secondary-color: #ffffff; /* Color secundario (fondo blanco) */
+    --text-color: #ffffff; /* Color del texto */
+    --hover-color: #f4a261; /* Color al pasar el mouse */
+    --footer-bg-color: #a82b31; /* Color del pie de página */
+    --card-bg-color: #f8f9fa; /* Fondo de las tarjetas */
+    --card-text-color: #333; /* Texto de las tarjetas */
+}
+
 body {
-    background-color: #f8f9fa;
-    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Asegurar que el contenido ocupe toda la altura de la ventana */
     margin: 0;
-    padding: 0;
 }
 
-/* Barra de navegación */
+main {
+    flex: 1; /* Hacer que el contenido principal ocupe el espacio restante */
+}
+
+/* Ajusta la altura y el padding de la navbar y sus elementos */
 .navbar {
-    background-color: #007bff; /* Fondo azul */
-    padding: 10px 0; /* Espaciado */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    border-radius: 8px; /* Bordes redondeados */
-    position: sticky;
-    top: 0;
-    z-index: 1000; /* Asegura que la barra de navegación quede por encima de otros elementos */
+    background-color: var(--primary-color) !important; /* Fondo de la navbar */
+    padding: 10px 0 !important; /* Más espacio vertical */
+    min-height: 56px !important; /* Más alta */
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
 }
 
-/* Logo en la barra */
 .navbar-brand img {
-    border-radius: 50%; /* Hacer el logo circular */
-    transition: transform 0.3s ease; /* Animación de logo */
+    height: 48px !important; /* Logo más grande */
+    max-height: 48px !important;
+    width: auto !important; /* Mantener la proporción */
 }
 
-/* Efecto al pasar el mouse sobre el logo */
-.navbar-brand img:hover {
-    transform: scale(1.1); /* Efecto de zoom */
+.navbar-nav .nav-link {
+    color: var(--secondary-color) !important; /* Cambiar el color del texto */
+    font-size: 0.85rem !important;
+    padding: 1px 8px; /* Más delgado el espacio vertical */
+    text-transform: uppercase; /* Opcional: convertir el texto a mayúsculas */
+    padding-top: 2px !important;
+    padding-bottom: 2px !important;
+    line-height: 1.2 !important;
 }
 
-/* Estilo de los enlaces de navegación */
-.navbar-nav .nav-item .nav-link {
-    color: #fff !important; /* Color blanco */
-    font-weight: 500; /* Font-weight semi-bold */
-    padding: 10px 20px; /* Espaciado */
-    text-transform: uppercase; /* Texto en mayúsculas */
-    font-size: 16px;
-    letter-spacing: 1px;
-    transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+.navbar-nav .nav-link:hover {
+    color: var(--hover-color) !important; /* Cambiar color al pasar el mouse */
 }
 
-/* Efecto hover sobre los enlaces */
-.navbar-nav .nav-item .nav-link:hover {
-    background-color: #0056b3; /* Fondo azul más oscuro */
-    color: #fff; /* Mantener texto blanco */
-    border-radius: 4px; /* Bordes redondeados */
+.nav-item.dropdown:hover .dropdown-menu-horizontal {
+    display: flex; /* Mostrar el menú al pasar el mouse */
 }
 
-/* Estilo para los dropdowns */
-.navbar-nav .nav-item .dropdown-menu {
-    display: none; /* Menú oculto por defecto */
-    transition: opacity 0.3s ease;
-    opacity: 0;
-    visibility: hidden;
-}
-
-.navbar-nav .nav-item:hover .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-}
-
-/* Flecha debajo del texto "Sobre Nosotros" */
-.navbar-nav .nav-item .dropdown-toggle::after {
-    content: "▼"; /* La flecha */
-    font-size: 10px; /* Flecha más pequeña */
+.dropdown-menu-horizontal {
+    display: none; /* Ocultar por defecto */
+    flex-direction: row;
     position: absolute;
-    bottom: -6px; /* Mover hacia abajo */
-    left: 50%;
-    transform: translateX(-50%); /* Centrarla */
-    color: #fff; /* Color blanco */
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    padding: 0.5rem 0;
+    margin: 0;
+    font-size: 1rem;
+    color: #212529;
+    text-align: left;
+    list-style: none;
+    background-color: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 0.25rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Estilo de las tarjetas de información en la página de contacto */
+.dropdown-menu-horizontal .dropdown-item {
+    white-space: nowrap;
+    padding: 0.5rem 1rem;
+    border-right: 1px solid #f0f0f0;
+}
+
+.dropdown-menu-horizontal .dropdown-item:last-child {
+    border-right: none;
+}
+
+.dropdown-menu-horizontal .dropdown-item:hover {
+    background-color: #f4a261;
+    color: #ffffff;
+}
+
+footer {
+    background-color: #6b1b1b; /* Fondo rojo */
+    color: #fff !important;    /* Texto blanco */
+    text-align: center;
+    padding: 8px 0 !important;
+    font-size: 0.95rem !important;
+    width: 100%;
+    margin: 0;
+    border: none;
+    font-family: 'Montserrat', 'Arial', sans-serif; /* Fuente bonita y consistente */
+    letter-spacing: 0.03em;
+}
+
+footer p {
+    margin: 0 !important;
+    padding: 0;
+    color: #fff !important; /* Asegura que el texto sea blanco */
+    text-align: center;
+}
+
+.custom-footer,
+.custom-footer p {
+    background-color: #6b1b1b !important;
+    color: #fff !important;
+    text-align: center !important;
+    font-family: 'Montserrat', 'Arial', sans-serif;
+    font-size: 0.95rem !important;
+    margin: 0 !important;
+    padding: 8px 0 !important;
+    border: none !important;
+    letter-spacing: 0.03em;
+}
+
+.btn-primary {
+    background-color: var(--primary-color) !important; /* Fondo del botón */
+    border-color: var(--primary-color) !important; /* Borde del botón */
+}
+
+.btn-primary:hover {
+    background-color: var(--hover-color) !important; /* Fondo al pasar el mouse */
+    border-color: var(--hover-color) !important; /* Borde al pasar el mouse */
+}
+
 .card {
-    background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    border-radius: 12px; /* Bordes redondeados */
-    margin-bottom: 20px;
-    padding: 15px;
+    background-color: var(--card-bg-color); /* Fondo de las tarjetas */
+    color: var(--card-text-color); /* Texto de las tarjetas */
+    border: none; /* Sin bordes */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombra */
 }
 
-/* Estilo para los títulos de las tarjetas */
 .card h3 {
-    font-size: 18px;
-    color: #007bff; /* Azul para los títulos */
+    color: var(--primary-color); /* Títulos de las tarjetas */
 }
 
-/* Estilo de los enlaces en las tarjetas */
 .card a {
-    color: #007bff; /* Azul para los enlaces */
-    text-decoration: none;
-    transition: color 0.3s ease;
+    color: var(--primary-color); /* Enlaces en las tarjetas */
 }
 
 .card a:hover {
-    color: #0056b3; /* Azul más oscuro al pasar el mouse */
-    text-decoration: underline;
+    color: var(--hover-color); /* Enlaces al pasar el mouse */
 }
 
-/* Estilo de los campos del formulario */
-.form-control {
-    background-color: #e9ecef; /* Fondo gris claro */
-    border-radius: 15px;
-    border: 1px solid #ced4da; /* Borde gris */
-    padding: 12px;
-    transition: border-color 0.3s ease;
+.bg-dark {
+    background-color:#6b1b1b !important; /* Cambiar el color gris oscuro al rojo */
+    color: white !important; /* Asegurar que el texto sea blanco */
 }
 
-/* Efecto al hacer focus en los campos del formulario */
-.form-control:focus {
-    border-color: #007bff; /* Borde azul al hacer focus */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5); /* Efecto de sombra al hacer focus */
-}
-
-/* Estilo de los botones del formulario */
-button {
-    background-color: #007bff;
+.language-btn {
+    background: #bb7f5b;
     color: #fff;
-    padding: 10px 20px;
     border: none;
-    border-radius: 15px;
+    padding: 0.3rem 1rem;
+    margin-left: 0.5rem;
+    border-radius: 6px;
+    font-weight: 500;
+    opacity: 1;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: background 0.2s, color 0.2s;
+}
+.language-btn[disabled] {
+    background: #e0e0e0;
+    color: #a82b31;
+    opacity: 1;
+    cursor: not-allowed;
 }
 
-/* Efecto hover sobre el botón */
-button:hover {
-    background-color: #0056b3; /* Azul más oscuro al pasar el mouse */
+.language-btn-sm {
+    background: #fff;
+    border: 1.5px solid #a82b31;
+    color: #a82b31;
+    cursor: pointer;
+    padding: 1px 10px;
+    border-radius: 7px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin-left: 4px;
+    margin-right: 0;
+    transition: background 0.18s, color 0.18s, border 0.18s;
+    line-height: 1.1;
+    height: 26px;
+    display: flex;
+    align-items: center;
 }
-
-/* Estilo de los íconos de redes sociales */
-.card .fab {
-    font-size: 18px;
-    margin-right: 10px;
-    transition: color 0.3s ease;
-}
-
-/* Efecto hover sobre los íconos de redes sociales */
-.card .fab:hover {
-    color: #0056b3; /* Cambiar el color al pasar el mouse */
-}
-
-/* Pie de página */
-footer {
-    background-color: #343a40;
-    color: white;
-    text-align: center;
-    padding: 20px;
-    margin-top: 50px;
-}
-
-footer a {
+.language-btn-sm.active,
+.language-btn-sm:focus {
+    background: #a82b31;
     color: #fff;
-    text-decoration: none;
-    transition: color 0.3s ease;
+    border-color: #bb7f5b;
+}
+.language-btn-sm:hover:not(.active) {
+    background: #f7e7e2;
+    color: #a82b31;
+    border-color: #a82b31;
+}
+.language-btn-sm:focus {
+    outline: none !important;
+    box-shadow: 0 0 0 2px #bb7f5b33 !important;
 }
 
-footer a:hover {
-    color: #007bff;
+/* Puedes ponerlo en navbar.html o en tu CSS global */
+.language-btn-vertical {
+    border: 1px solid #a82b31;
+    color: #a82b31;
+    background: #fff;
+    border-radius: 6px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 2px 10px;
+    transition: background 0.2s, color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    min-width: 80px;
+    justify-content: flex-start;
+}
+.language-btn-vertical.selected,
+.language-btn-vertical:active {
+    background: #a82b31 !important;
+    color: #fff !important;
 }
